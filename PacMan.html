@@ -1,7 +1,78 @@
 <!DOCTYPE html>
-<html>
-  <head>    
-  </head>
-  <body>    
-  </body>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Grid Map</title>
+<style>
+  body {
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  canvas {
+    border: 1px solid #444;
+    image-rendering: pixelated;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="mapCanvas"></canvas>
+
+<script>
+const map = [
+   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+   [1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,1],
+   [1,0,1,1,0,1,1,1,0,1,1,0,1,1,1,0,1,1,0,1],
+   [1,0,1,1,0,1,1,1,0,1,1,0,1,1,1,0,1,1,0,1],
+   [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+   [1,0,1,1,0,1,0,1,1,1,1,1,1,0,1,0,1,1,0,1],
+   [1,0,0,0,0,1,0,0,0,1,1,0,0,0,1,0,0,0,0,1],
+   [1,1,1,1,0,1,1,1,0,1,1,0,1,1,1,0,1,1,1,1],
+   [0,0,0,1,0,1,0,0,0,0,0,0,0,0,1,0,1,0,0,0],
+   [1,1,1,1,0,1,0,1,1,0,0,1,1,0,1,0,1,1,1,1],
+   [0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0], 
+   [1,1,1,1,0,1,0,1,1,1,1,1,1,0,1,0,1,1,1,1],
+   [0,0,0,1,0,1,0,0,0,0,0,0,0,0,1,0,1,0,0,0],
+   [1,1,1,1,0,1,0,1,1,1,1,1,1,0,1,0,1,1,1,1],
+   [1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,1],
+   [1,0,1,1,0,1,1,1,0,1,1,0,1,1,1,0,1,1,0,1],
+   [1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1],
+   [1,1,0,1,0,1,0,1,1,1,1,1,1,0,1,0,1,0,1,1],
+   [1,0,0,0,0,1,0,0,0,1,1,0,0,0,1,0,0,0,0,1],
+   [1,0,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,0,1],
+   [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
+   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+];
+
+const tileSize = 5;
+const rows = map.length;
+const cols = map[0].length;
+
+const canvas = document.getElementById("mapCanvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = cols * tileSize;
+canvas.height = rows * tileSize;
+
+function drawMap() {
+  for (let y = 0; y < rows; y++) {
+    for (let x = 0; x < cols; x++) {
+      if (map[y][x] === 1) {
+        ctx.fillStyle = "purple";
+      } else {
+        ctx.fillStyle = "black";
+      }
+      ctx.fillRect(x * tileSize, y * tileSize, tileSize, tileSize);
+    }
+  }
+}
+
+drawMap();
+</script>
+
+</body>
 </html>
