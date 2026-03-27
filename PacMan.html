@@ -49,8 +49,8 @@ const map = [
 ];
 
 const tileSize = 10px;
-const rows = 40;
-const cols = 40;
+const rows = map.length * 2;
+const cols = map[0].length * 2;
 
 const canvas = document.getElementById("mapCanvas");
 const ctx = canvas.getContext("2d");
